@@ -1,0 +1,55 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}Solvrr{% endblock %}
+
+{% block metas %}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script>window.html5 || document.write('<script src="/static/js/vendor/html5shiv.js"><\/script>')</script>
+<![endif]-->
+{% endblock %}
+
+{% block navbar %}
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="{{url_for('index')}}">Solvrr</a>
+		</div>
+	</nav>
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='main.css')}}">
+{% endblock %}
+
+{% block content %}
+	{% for i in range(0, 7) %}
+	<br>
+	{% endfor %}
+	<div class="container">
+		<div class="form-group">
+			<form method="POST">
+				<textarea class="form-control" rows="10" placeholder="Your problem here"></textarea>
+				<input class="form-control btn btn-default" type="submit">
+			</form>
+		</div>
+
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<div class="text-info lead">{{ message }}</div>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+
+		<p>Do you have a problem that needs to be solved? If so, you have come to the right place! Type your problem into the textbox, press submit and our algorithm will automatically generate a solution for you!</p>
+	</div>
+
+	<footer>
+		<p class="text-muted">v0.1</p>
+	</footer>
+{% endblock %}
