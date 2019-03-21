@@ -1,2 +1,2 @@
-flask==1.0.2
-flask_bootstrap==1.0.10
+flask
+flask-bootstrap
